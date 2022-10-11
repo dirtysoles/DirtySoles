@@ -1,37 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 import { ShoeCard } from "../components/ShoeCard";
 import styled from "styled-components";
 import axios from "axios";
 
-const ProdPage = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ProdTitle = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const ProdWrapper = styled.div`
-    width: 100%; 
-    display: flex; 
-    justify-content: space-around;
-    align-items: center;
-`;
-
 const Prod = styled.div`
   display: flex;
-  width: 100%;
+  //width: 100vw;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin:  4rem;
+  //margin:  4rem;
 `;
 
 export const Products = () => {
@@ -48,11 +28,7 @@ export const Products = () => {
     getSneakers();
   }, []);
   return (
-    <ProdPage>
-      <ProdTitle>
-        <h1>All Products</h1>
-      </ProdTitle>
-      <ProdWrapper>
+    <Container>
         <Prod>
           {sneakers.map((shoe) => (
             <ShoeCard
@@ -63,7 +39,6 @@ export const Products = () => {
             />
           ))}
         </Prod>
-      </ProdWrapper>
-    </ProdPage>
+    </Container>
   );
 };

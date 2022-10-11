@@ -1,17 +1,19 @@
 import axios from "axios";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "../components/Button";
 
 const DetailPage = styled.div`
-  width: 100vw;
+  width: 80vw;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
 `;
 
 const DetailPageLeft = styled.div`
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +23,7 @@ const DetailPageLeft = styled.div`
 `;
 
 const DetailPageRight = styled.div`
-  width: 50%;
+  width: 40%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -40,10 +42,10 @@ const DetailRoute = styled.div`
   span {
     color: #001aff;
   }
-  a{
-    text-decoration:none; 
+  a {
+    text-decoration: none;
     color: #777;
-  }; 
+  }
 `;
 
 export const ProductDetails = () => {
@@ -63,30 +65,32 @@ export const ProductDetails = () => {
   }, []);
 
   return (
-    <DetailPage>
-      <DetailPageLeft>
-        <DetailRoute>
-          <Link to="/">Home/</Link>
-          <Link to="/products">Products/</Link>
-          <span>{sneakersDetails.name}</span>
-        </DetailRoute>
-        <img src={sneakersDetails.images?.regular} width="85%" />
-      </DetailPageLeft>
-      <DetailPageRight>
-        <h1>{sneakersDetails.name}</h1>
-        <h2>${sneakersDetails.price}</h2>
-        <h1>sizes</h1>
-        <p>
-          The sizes are set to men. Buying for women sizes just subtract 1.5 to
-          the men sizes. For example, women 6 is a men 4.5.
-        </p>
-        <DetailButton>
-          <Button>button 1</Button>
-          <Button>button 2</Button>
-        </DetailButton>
-        <h1>in stock: {sneakersDetails.stock}</h1>
-        <h1>Product Colorway:{sneakersDetails.colorway}</h1>
-      </DetailPageRight>
-    </DetailPage>
+    <Container>
+      <DetailPage>
+        <DetailPageLeft>
+          <DetailRoute>
+            <Link to="/">Home/</Link>
+            <Link to="/products">Products/</Link>
+            <span>{sneakersDetails.name}</span>
+          </DetailRoute>
+          <img src={sneakersDetails.images?.regular} width="85%" />
+        </DetailPageLeft>
+        <DetailPageRight>
+          <h1>{sneakersDetails.name}</h1>
+          <h2>${sneakersDetails.price}</h2>
+          <p>sizes</p>
+          <p>
+            The sizes are set to men. Buying for women sizes just subtract 1.5
+            to the men sizes. For example, women 6 is a men 4.5.
+          </p>
+          <DetailButton>
+            <Button>button 1</Button>
+            <Button>button 2</Button>
+          </DetailButton>
+          <p>in stock: {sneakersDetails.stock}</p>
+          <p>Product Colorway:{sneakersDetails.colorway}</p>
+        </DetailPageRight>
+      </DetailPage>
+    </Container>
   );
 };

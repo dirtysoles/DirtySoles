@@ -1,10 +1,10 @@
 //import { BrowserRouter as Router, Route } from "react-router-dom";
 import React from "react";
 import {Route, Routes} from 'react-router-dom';
+import { Container } from "react-bootstrap";
 import {Home} from "./pages/Home";
 import {Products} from "./pages/Products"
 import {ProductDetails} from "./pages/ProductDetails"
-import {About} from "./pages/About";
 import {Admin} from "./pages/Admin";
 import { Navbar } from "./components/Navbar";
 import "./App.css";
@@ -14,12 +14,14 @@ const App = () => {
   return (
     <>
     <Navbar/>
+    <Container className="mb-4">
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/products" element={<Products/>}></Route>
         <Route path="/products/:sneakerId" element={<ProductDetails/>}></Route>
         <Route path="/admin" element={<Admin/>}> </Route>
       </Routes>
+    </Container>
     </>
   );
 };
