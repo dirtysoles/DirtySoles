@@ -7,7 +7,7 @@ const UserSchema = new Schema(
         passWord: { type: String, required: true },
         firstName: { type: Object, required: true },
         lastName: { type: String, required: true },
-        shippingAddress: {
+        shippingAddress: {type: Object,
             street: {type: String}, 
             unit: {type: Number}, 
             city: {type: String}, 

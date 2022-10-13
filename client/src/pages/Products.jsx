@@ -4,14 +4,20 @@ import { ShoeCard } from "../components/ShoeCard";
 import styled from "styled-components";
 import axios from "axios";
 
+const TitleProd = styled.div`
+  display: flex;
+  flex-direction: row; 
+  margin: 4rem; 
+`;
+
 const Prod = styled.div`
   display: flex;
   //width: 100vw;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  //margin:  4rem;
+  align-content: center;
+  justify-content: flex-start;
+  margin: 0 auto; 
 `;
 
 export const Products = () => {
@@ -29,6 +35,9 @@ export const Products = () => {
   }, []);
   return (
     <Container>
+        <TitleProd>
+          <h1>All Products</h1>
+        </TitleProd>
         <Prod>
           {sneakers.map((shoe) => (
             <ShoeCard
