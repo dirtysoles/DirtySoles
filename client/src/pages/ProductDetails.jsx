@@ -63,7 +63,7 @@ export const ProductDetails = () => {
   useEffect(() => {
     getSneakerDetails();
   }, []);
-
+  console.log(sneakersDetails);
   return (
     <Container>
       <DetailPage>
@@ -73,7 +73,7 @@ export const ProductDetails = () => {
             <Link to="/products">Products/</Link>
             <span>{sneakersDetails.name}</span>
           </DetailRoute>
-          <img src={sneakersDetails.images?.regular} width="85%" />
+          <img src={sneakersDetails.images?.regular} width="100%" />
         </DetailPageLeft>
         <DetailPageRight>
           <h1>{sneakersDetails.name}</h1>
@@ -87,7 +87,6 @@ export const ProductDetails = () => {
             <Button>button 1</Button>
             <Button>button 2</Button>
           </DetailButton>
-          <p>in stock: {sneakersDetails.stock}</p>
           <p>Product Colorway:{sneakersDetails.colorway}</p>
         </DetailPageRight>
       </DetailPage>
