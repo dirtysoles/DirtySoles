@@ -9,12 +9,14 @@ const Card = styled.div`
   margin: 2rem 0;
   &:hover {
     cursor: pointer;
+    transform: translateY(-10px);
+    
   }
 `;
 
 export const ShoeCard = ({ name, img, id, price }) => {
   return (
-    <Link relative="path" to={`${id}`} style={{textDecoration: "none", color: "#777"}} >
+    <Link relative="path" to={`/products/${id}`} style={{textDecoration: "none", color: "#777"}} >
       <Card>
         <img
           src={img}

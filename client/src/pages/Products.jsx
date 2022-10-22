@@ -8,6 +8,12 @@ const TitleProd = styled.div`
   display: flex;
   flex-direction: row; 
   margin: 4rem; 
+  width: fit-content; 
+  align-items: center; 
+  border-bottom: 3px solid #001aff;;
+  h3 {
+    font-weight: bolder;
+  }
 `;
 
 const Prod = styled.div`
@@ -36,7 +42,7 @@ export const Products = () => {
   return (
     <Container>
         <TitleProd>
-          <h1>All Products</h1>
+          <h3>All Products</h3>
         </TitleProd>
         <Prod>
           {sneakers.map((shoe) => (

@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <NavbarBs sticky="top" className="bg-light shadow-lg mb-3">
+    <NavbarBs className="bg-light shadow-lg mb-3">
       <Container>
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink}>
-            <img></img>
+          <img src={ require('../images/dirtysoleslogo.png') } height="100px" width="100px"/>
           </Nav.Link>
         </Nav>
         <Nav>
