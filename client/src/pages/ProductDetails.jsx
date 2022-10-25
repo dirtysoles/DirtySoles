@@ -5,10 +5,11 @@ import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "../components/Button";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const DetailRoute = styled.div`
-  a{
-    text-decoration: none; 
+  a {
+    text-decoration: none;
     color: black;
   }
 `;
@@ -80,17 +81,40 @@ export const ProductDetails = () => {
             <h3>${sneakersDetails.price}</h3>
           </DetailTitle>
           <DetailSizes className="d-flex flex-row align-items-center">
-            <Form.Select style={{height:"40px", width:"100px"}}>
-            {sneakersDetails.shoeSize?.map(function (shoe, idx) {
-            return <option value={idx}>{shoe.size}</option>;
-            })}
+            <Form.Select style={{ height: "40px", width: "100px" }}>
+              {sneakersDetails.shoeSize?.map(function (shoe, idx) {
+                return <option value={idx}>{shoe.size}</option>;
+              })}
             </Form.Select>
             <p>
-              The sizes are set to men. Buying for women sizes just subtract 1.5
+              The sizes are set to men sizes unless it is identified as W. Buying for women sizes just subtract 1.5
               to the men sizes. For example, women 6 is a men 4.5.
             </p>
           </DetailSizes>
           <Button>Add to Cart</Button>
+          <PayPalScriptProvider options={{ "client-id": "test" }}>
+            <PayPalButtons
+              style={{ layout: "horizontal" }}
+              createOrder={(data, actions) => {
+                return actions.order.create({
+                  purchase_units: [
+                    {
+                      intent: "capture",
+                      currency: "USD",
+                      amount: {
+                        value: '400',
+                      },
+                    },
+                  ],
+                });
+              }}
+              onApprove={async (data, actions) => {
+                const details = await actions.order.capture();
+                const name = details.payer.name.given_name;
+                alert("Transaction completed by " + name);
+              }}
+            />
+          </PayPalScriptProvider>
         </DetailDesc>
       </DetailCard>
     </Container>

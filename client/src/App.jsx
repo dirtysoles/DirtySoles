@@ -1,6 +1,6 @@
 //import { BrowserRouter as Router, Route } from "react-router-dom";
 import React from "react";
-import { Routes , Navigate, Route} from "react-router-dom";
+import { Routes, Navigate, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
@@ -8,6 +8,7 @@ import { Products } from "./pages/Products";
 import { ProductDetails } from "./pages/ProductDetails";
 import { Login } from "./pages/Login";
 import { Navbar } from "./components/Navbar";
+import BottomNav from "./components/BottomNav";
 import "./App.css";
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           </Route>
         </Routes>
       </Container>
+      <BottomNav />
     </>
   );
 };

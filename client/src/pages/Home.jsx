@@ -59,7 +59,7 @@ export const Home = () => {
         <DisplayButton>
           <Button>Shop Now</Button>
           <Link to="/about" style={{ textDecoration: "None", color: "black" }}>
-            <Button>Terms</Button>
+            <Button>About Us</Button>
           </Link>
         </DisplayButton>
       </Link>
