@@ -59,8 +59,9 @@ export const ProductDetails = () => {
   useEffect(() => {
     getSneakerDetails();
   }, []);
-  console.log(sneakersDetails);
+  console.log(sneakersDetails.price);
   return (
+    sneakersDetails.price &&
     <Container
       className="d-flex flex-column justify-content-center"
       style={{ height: "80vh" }}
@@ -102,7 +103,7 @@ export const ProductDetails = () => {
                       intent: "capture",
                       currency: "USD",
                       amount: {
-                        value: '400',
+                        value: sneakersDetails.price,
                       },
                     },
                   ],
