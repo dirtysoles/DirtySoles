@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Btn = styled.div`
+const Btn = styled.button`
   display: inline-block;
   background: #001aff;
   text-align: center;
@@ -17,11 +17,10 @@ const Btn = styled.div`
 
 export const Button = ({
   children,
-  type,
   onClick
 }) => {
   return (
-    <Btn onClick={onClick} type={type}>
+    <Btn onClick={onClick}>
       {children}
     </Btn>
   );

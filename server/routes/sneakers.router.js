@@ -1,9 +1,9 @@
 import express from "express";
-
+import { requireAuth } from "../middleware/requireAuth.js";
 import { sneakerController } from "../controllers/sneakers.controller.js";
 const { getSneaker, getSneakers } = sneakerController;
 
-const router = express.Router({});
+const router = express.Router(requireAuth);
 
 router.get("/sneakers", async (req, res) => {
   const sneakers = await getSneakers({});

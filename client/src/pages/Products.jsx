@@ -28,7 +28,6 @@ const Prod = styled.div`
 
 export const Products = () => {
   const [sneakers, setSneakers] = useState([]); //read state
-  const [search, setSearch] = useState("");
 
   const getSneakers = async () => {
     const data = await (

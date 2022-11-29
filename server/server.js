@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import { sneakerRoutes } from "./routes/sneakers.router.js";
 import { inventoryRouter } from "./routes/inventory.router.js";
 import { productRouter } from "./routes/products.router.js";
+import {userRouter} from "./routes/users.router.js"
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(sneakerRoutes);
 app.use(inventoryRouter);
 app.use(productRouter);
+app.use(userRouter);
 
 const URI = process.env.DB_URI;
 const PORT = process.env.PORT || 13000;

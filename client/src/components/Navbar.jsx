@@ -1,13 +1,17 @@
-import { Container, Button, Nav, Navbar as NavbarBs } from "react-bootstrap";
+import { Container, Nav, Navbar as NavbarBs, Dropdown, Badge } from "react-bootstrap";
+import {FaShoppingCart} from 'react-icons/fa'
 import { NavLink } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export const Navbar = () => {
+  const {user} = useAuthContext(); //to see user in context
+
   return (
     <NavbarBs className="bg-light shadow-lg mb-3">
       <Container>
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink}>
-          <img src={ require('../images/dirtysoleslogo.png') } height="100px" width="100px"/>
+            <img src={ require('../images/dirtysoleslogo.png') } alt="DirtySoles" height="100px" width="100px"/>
           </Nav.Link>
         </Nav>
         <Nav>
@@ -20,10 +24,31 @@ export const Navbar = () => {
           <Nav.Link to="/about" as={NavLink}>
             About
           </Nav.Link>
-          <Nav.Link to="login" as={NavLink}>
+          {user && (
+            <Nav.Link to="/account" as={NavLink}>
+              Account
+            </Nav.Link>
+          )}
+          {!user && (
+          <Nav.Link to="/login" as={NavLink}>
             Login
           </Nav.Link>
-          <Button
+          )
+          }
+
+          {/* shopping cart button */}
+          <Nav>
+            <Dropdown className="mx-2">
+              <Dropdown.Toggle>
+                <FaShoppingCart color="white" fontSize="25px"/>
+                <Badge>{0}</Badge>
+              </Dropdown.Toggle>
+              <Dropdown.Menu style={{minWidth:370}}>
+                <span style={{padding:10}}> Cart is Empty!</span>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav>
+          {/* <Button
             style={{ width: "3rem", height: "3rem", position: "relative" }}
             variant="outline-primary"
             className="rounded-circle"
@@ -50,7 +75,7 @@ export const Navbar = () => {
             >
               +
             </div>
-          </Button>
+          </Button> */}
         </Nav>
       </Container>
     </NavbarBs>

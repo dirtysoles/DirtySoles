@@ -31,3 +31,19 @@ export const ShoeCard = ({ name, img, id, price }) => {
     </Link>
   );
 };
+
+export const Shoe = ({name, img, price}) => {
+  return(
+    <Card>
+    <img
+      src={img}
+      alt=""
+      width="100%"
+      style={{ borderRadius: "10px", padding: "20px" }}
+    />
+    <div style={{ width: "100%", boxSizing: "border-box", padding: "1rem" }}>
+      {name} <br/> ${price}
+    </div>
+  </Card>
+  )
+}

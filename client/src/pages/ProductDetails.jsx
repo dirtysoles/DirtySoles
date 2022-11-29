@@ -6,7 +6,6 @@ import Form from "react-bootstrap/Form";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
 const DetailRoute = styled.div`
   a {
     text-decoration: none;
@@ -44,7 +43,7 @@ const DetailSizes = styled.div`
   gap: 2rem;
 `;
 
-export const ProductDetails = () => {
+export const ProductDetails = ({prod}) => {
   const params = useParams(); //read doc
   const [sneakersDetails, setSneakerDetails] = useState([]); //read state
 
@@ -59,19 +58,20 @@ export const ProductDetails = () => {
   useEffect(() => {
     getSneakerDetails();
   }, []);
+
   console.log(sneakersDetails.price);
+
   return (
     sneakersDetails.price &&
     <Container
-      className="d-flex flex-column justify-content-center"
-      style={{ height: "80vh" }}
+      className="d-flex flex-column justify-content-center vh-100%"
     >
       <DetailRoute>
         <Link to="/">Home / </Link>
         <Link to="/products">Products / </Link>
         <span>{sneakersDetails.name}</span>
       </DetailRoute>
-      <DetailCard className="d-flex flex-row">
+      <DetailCard className="d-flex flex-row align-items-center">
         <DetailImage>
           <img src={sneakersDetails.images?.regular} width="100%" alt="shoe" />
         </DetailImage>

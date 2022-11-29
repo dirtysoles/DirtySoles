@@ -1,7 +1,8 @@
 import express from "express";
 import { inventoryController } from "../controllers/inventory.controller.js";
+import { requireAuth } from "../middleware/requireAuth.js";
 
-const inventoryRouter = express.Router();
+const inventoryRouter = express.Router(requireAuth);
 const {
   getInventory,
   getInventoryItem,
